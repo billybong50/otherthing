@@ -5,16 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Math Solve</title>
   <link rel="icon" type="image/png" href="chrome.png">
+  <style>
+    body {
+      max-width: 680px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font: 16px/1.55 system-ui, sans-serif;
+    }
+    li { margin: 0 0 12px; }
+    button { padding: 10px 14px; cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .55; }
+    .acknowledgment { margin: 22px 0; }
+    #status { min-height: 1.5em; }
+  </style>
 </head>
 <body>
-  <button id="open">Open in new tab</button>
+  <h1>Before opening AI Math Solve</h1>
+
+  <ol>
+    <li>
+      <strong>Using the site:</strong> You can enter a math question and submit
+      it. If the site offers screenshot input, you can use that too. Review
+      results .
+    </li>
+    <li>
+      <strong>Closing the tab:</strong> To make it so teachers can't close this tab you must interact with the page type and then submit or something. Your teachers will try to close all your tabs this tab will ask to leave or cancel , select cancel.
+    </li>
+    <li>
+      <strong>Use it reasonably:</strong> When on here teachers will see a blank screen and be suspicious about why it does not show deltamath. Use sparingly. Dont get caught.
+    </li>
+  </ol>
+
+  <label class="acknowledgment">
+    <input type="checkbox" id="readInstructions">
+    I’ve read these instructions.
+  </label>
+
+  <p>
+    <button id="openSite" type="button" disabled>
+      Open AI Math Solve
+    </button>
+  </p>
+  <p id="status" role="status"></p>
 
   <script>
-    document.getElementById("open").addEventListener("click", () => {
+    const checkbox = document.getElementById("readInstructions");
+    const openButton = document.getElementById("openSite");
+    const status = document.getElementById("status");
+
+    checkbox.addEventListener("change", () => {
+      openButton.disabled = !checkbox.checked;
+    });
+
+    openButton.addEventListener("click", () => {
       const tab = window.open("about:blank", "_blank");
 
       if (!tab) {
-        alert("Popup blocked. Allow popups and try again.");
+        status.textContent =
+          "Your browser blocked the new tab. Allow popups and try again.";
         return;
       }
 
@@ -37,14 +85,15 @@
       padding: 0 12px;
       background: #f3f4f6;
       border-bottom: 1px solid #d1d5db;
+      font: 14px system-ui, sans-serif;
     }
-    button { padding: 7px 12px; cursor: pointer; }
     iframe {
       display: block;
       width: 100%;
       height: calc(100% - 48px);
       border: 0;
     }
+    button { padding: 7px 12px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -57,12 +106,10 @@
 
   <script>
     const frame = document.getElementById("site");
-
     document.getElementById("reload").addEventListener("click", () => {
       frame.src = frame.src;
     });
-
-    window.addEventListener("beforeunload", (event) => {
+        window.addEventListener("beforeunload", (event) => {
       event.preventDefault();
       event.returnValue = "";
     });
@@ -70,6 +117,9 @@
 </body>
 </html>`);
       tab.document.close();
+
+      status.textContent =
+        "The site opened in a new tab. You can close it whenever you like.";
     });
   </script>
 </body>
