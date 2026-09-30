@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Math Solve</title>
+</head>
+<body>
+  <button id="open">Open in new tab</button>
+
+  <script>
+    document.getElementById("open").addEventListener("click", () => {
+      const tab = window.open("about:blank", "_blank");
+
+      if (!tab) {
+        alert("Popup blocked. Allow popups and try again.");
+        return;
+      }
+
+      tab.document.open();
+      tab.document.write(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Math Solve</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    header {
+      height: 48px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 12px;
+      background: #f3f4f6;
+      border-bottom: 1px solid #d1d5db;
+    }
+    button { padding: 7px 12px; cursor: pointer; }
+    iframe {
+      display: block;
+      width: 100%;
+      height: calc(100% - 48px);
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="reload" type="button">Reload iframe</button>
+  </header>
+
+  <iframe id="site" title="AI Math Solve"
+          src="https://www.aimathsolve.com/"></iframe>
+
+  <script>
+    const frame = document.getElementById("site");
+
+    document.getElementById("reload").addEventListener("click", () => {
+      frame.src = frame.src;
+    });
+
+    window.addEventListener("beforeunload", (event) => {
+      event.preventDefault();
+      event.returnValue = "";
+    });
+  <\/script>
+</body>
+</html>`);
+      tab.document.close();
+    });
+  </script>
+</body>
+</html>
