@@ -4,7 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Math Solve</title>
-  <link rel="icon" type="image/png" href="chrome.png">
+<link id="favicon" rel="icon" type="image/png" href="lightchrome.png">
+<script>
+  const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const favicon = document.getElementById("favicon");
+
+  function updateFavicon() {
+    favicon.href = colorScheme.matches ? "darkchrome.png" : "lightchrome.png";
+  }
+
+  updateFavicon();
+  colorScheme.addEventListener("change", updateFavicon);
+</script>
   <style>
     body {
       max-width: 680px;
