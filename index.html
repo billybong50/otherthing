@@ -4,18 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Math Solve</title>
-<link id="favicon" rel="icon" type="image/png" href="lightchrome.png">
-<script>
-  const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  const favicon = document.getElementById("favicon");
 
-  function updateFavicon() {
-    favicon.href = colorScheme.matches ? "darkchrome.png" : "lightchrome.png";
-  }
-
-  updateFavicon();
-  colorScheme.addEventListener("change", updateFavicon);
-</script>
   <style>
     body {
       max-width: 680px;
@@ -84,7 +73,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>New Tab</title>
-  <link rel="icon" type="image/png" href="chrome.png">
+  <link id="favicon" rel="icon" type="image/png" href="lightchrome.png">
+  <script>
+    const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const favicon = document.getElementById("favicon");
+
+    function updateFavicon() {
+      favicon.href = colorScheme.matches
+        ? "darkchrome.png"
+        : "lightchrome.png";
+    }
+
+    updateFavicon();
+    colorScheme.addEventListener("change", updateFavicon);
+  <\/script>
   <style>
     * { box-sizing: border-box; }
     html, body { width: 100%; height: 100%; margin: 0; }
@@ -120,13 +122,9 @@
     document.getElementById("reload").addEventListener("click", () => {
       frame.src = frame.src;
     });
-        window.addEventListener("beforeunload", (event) => {
-      event.preventDefault();
-      event.returnValue = "";
-    });
   <\/script>
 </body>
-</html>`);
+</html>);
       tab.document.close();
 
       status.textContent =
