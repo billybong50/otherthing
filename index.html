@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI Math Solve</title>
-
   <style>
     body {
       max-width: 680px;
@@ -24,16 +23,12 @@
 
   <ol>
     <li>
-      <strong>Using the site:</strong> You can enter a math question and submit
-      it. If the site offers screenshot input, you can use that too. Review
-      results .
+      You can enter a math question and submit it. If the site supports
+      screenshot input, you can use that too. Review the results and follow
+      your school’s rules for using the site.
     </li>
-    <li>
-      <strong>Closing the tab:</strong> To make it so teachers can't close this tab you must interact with the page type and then submit or something. Your teachers will try to close all your tabs this tab will ask to leave or cancel , select cancel.
-    </li>
-    <li>
-      <strong>Use it reasonably:</strong> When on here teachers will see a blank screen and be suspicious about why it does not show deltamath. Use sparingly. Dont get caught.
-    </li>
+    <li>You can close the new tab whenever you like.</li>
+    <li>Take breaks and use the site only as needed.</li>
   </ol>
 
   <label class="acknowledgment">
@@ -73,20 +68,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>New Tab</title>
-  <link id="favicon" rel="icon" type="image/png" href="lightchrome.png">
+
+  <link id="favicon" rel="icon" type="image/png"
+    href="https://raw.githubusercontent.com/billybong50/otherthing/main/lightchrome.png">
+
   <script>
     const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
     const favicon = document.getElementById("favicon");
 
     function updateFavicon() {
       favicon.href = colorScheme.matches
-        ? "darkchrome.png"
-        : "lightchrome.png";
+        ? "https://raw.githubusercontent.com/billybong50/otherthing/main/darkchrome.png"
+        : "https://raw.githubusercontent.com/billybong50/otherthing/main/lightchrome.png";
     }
 
     updateFavicon();
     colorScheme.addEventListener("change", updateFavicon);
   <\/script>
+
   <style>
     * { box-sizing: border-box; }
     html, body { width: 100%; height: 100%; margin: 0; }
@@ -115,7 +114,7 @@
   </header>
 
   <iframe id="site" title="AI Math Solve"
-          src="https://www.aimathsolve.com/"></iframe>
+    src="https://www.aimathsolve.com/"></iframe>
 
   <script>
     const frame = document.getElementById("site");
@@ -124,7 +123,7 @@
     });
   <\/script>
 </body>
-</html>);
+</html>`);
       tab.document.close();
 
       status.textContent =
